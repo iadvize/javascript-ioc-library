@@ -9,10 +9,10 @@ describe('registry', () => {
       sharedcomponents: true
     };
 
-    registry.addCoreConstantValue('sharedcomponents', sharedcomponents);
+    registry.addCoreConstantValue('Sharedcomponents', sharedcomponents);
 
     let profileInit = 0;
-    registry.addFeature('Profile', ['sharedcomponents', function Profile(a) {
+    registry.addFeature('Profile', ['Sharedcomponents', function Profile(a) {
       profileInit++;
       t.strictEqual(a, sharedcomponents);
       return {

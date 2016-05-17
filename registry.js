@@ -47,7 +47,7 @@ function Registry() {
     // Setup injectable
     decorate(injectable(), feature);
 
-    const deps = _.initial(featureDesc);
+    const deps = _.initial(featureDesc).map((feature) => feature.toLowerCase());
 
     deps.forEach((dep, i) => {
       if (!_.has(symbols, dep)) {
