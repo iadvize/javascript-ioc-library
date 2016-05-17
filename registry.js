@@ -11,30 +11,6 @@ function Registry() {
   const symbols = {}; // {'lowercasefeature': Symbol}
   const kernel = new Kernel();
 
-  const getArgs = (function() {
-    // extracted from angular
-    const FN_ARGS = /^function\s*[^\(]*\(\s*([^\)]*)\)/m;
-    const FN_ARG_SPLIT = /,/;
-    const FN_ARG = /^\s*(_?)(\S+?)\1\s*$/;
-    const STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
-
-    return function annotate(fn) {
-      var $inject
-      if (!($inject = fn.$inject)) {
-        $inject = [];
-        const fnText = fn.toString().replace(STRIP_COMMENTS, '');
-        const argDecl = fnText.match(FN_ARGS);
-        _.forEach(argDecl[1].split(FN_ARG_SPLIT), function(arg) {
-          arg.replace(FN_ARG, function(all, underscore, name) {
-            $inject.push(name);
-          });
-        });
-      }
-
-      return $inject;
-    }
-  })();
-
   // kernel.applyMiddleware(function logger(next) {
   //   return (context) => {
   //     let result = next(context);
@@ -43,6 +19,45 @@ function Registry() {
   //     return result;
   //   };
   // });
+  //
+
+  /**
+   * [_addFeature description]
+   * @param {String} name
+   * @param {Array} feature
+   */
+  function _addFeature(name, featureDesc){
+    const featureName = name.toLowerCase();
+
+    if (_.has(symbols, featureName)) {
+      throw new Error(`Something called "${featureName}" already exists!`);
+    }
+    symbols[featureName] = featureName;
+
+    if(!_.isArray(featureDesc)){
+      throw new Error(`f(name, featureDescription), featureDescription MUST be an array ending with a function`);
+    }
+
+    const feature = _.last(featureDesc);
+
+    if(!_.isFunction(feature)){
+      throw new Error(`f(name, featureDescription), featureDescription MUST ends with a function`);
+    }
+
+    // Setup injectable
+    decorate(injectable(), feature);
+
+    const deps = _.initial(featureDesc);
+
+    deps.forEach((dep, i) => {
+      if (!_.has(symbols, dep)) {
+        throw new Error(`Undeclared feature "${dep}"!`);
+      }
+      decorate(inject(dep), feature, i);
+    });
+
+    kernel.bind(featureName).to(feature).inSingletonScope();
+  }
 
   return {
     kernel: kernel,
@@ -67,53 +82,9 @@ function Registry() {
       kernel.bind(valueName).toConstantValue(instance);
     },
 
-    addCoreFeature(feature) {
-      const featureName = feature.name.toLowerCase();
 
-      if (_.has(symbols, featureName)) {
-        throw new Error(`Something called "${featureName}" already exists!`);
-      }
-      symbols[featureName] = featureName;
-
-      // Setup injectable
-      decorate(injectable(), feature);
-
-      // declare binding (extract constructor arguments)
-      const deps = getArgs(feature);
-
-      deps.forEach((dep, i) => {
-        if (!_.has(symbols, dep)) {
-          throw new Error(`Undeclared feature "${dep}"!`);
-        }
-        decorate(inject(dep), feature, i);
-      });
-
-      kernel.bind(featureName).to(feature).inSingletonScope();
-    },
-
-    addFeature(feature) {
-      const featureName = feature.name.toLowerCase();
-
-      if (_.has(symbols, featureName)) {
-        throw new Error(`Something called "${featureName}" already exists!`);
-      }
-      symbols[featureName] = featureName;
-
-      // Setup injectable
-      decorate(injectable(), feature);
-
-      // declare binding (extract constructor arguments)
-      const deps = getArgs(feature);
-
-      deps.forEach((dep, i) => {
-        if (!_.has(symbols, dep)) {
-          throw new Error(`Undeclared feature "${dep}"!`);
-        }
-        decorate(inject(dep), feature, i);
-      });
-
-      kernel.bind(featureName).to(feature).inSingletonScope();
-    },
+    addFeature: _addFeature,
+    addCoreFeature: _addFeature,
 
     getFeature(name) {
       const featureName = name.toLowerCase();

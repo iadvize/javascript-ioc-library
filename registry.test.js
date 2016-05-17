@@ -5,23 +5,20 @@ describe('registry', () => {
   it('should support singleton on feature', () => {
     const registry = Registry();
 
-    const _sharedcomponents = {
-      _sharedcomponents: true
+    const sharedcomponents = {
+      sharedcomponents: true
     };
 
-    registry.addCoreConstantValue('sharedcomponents', _sharedcomponents);
-
-    // registry.addCoreConstantValue('sharedcomponents', _sharedcomponents);
+    registry.addCoreConstantValue('sharedcomponents', sharedcomponents);
 
     let profileInit = 0;
-    registry.addFeature(function Profile(sharedcomponents) {
+    registry.addFeature('Profile', ['sharedcomponents', function Profile(a) {
       profileInit++;
-      t.strictEqual(sharedcomponents, _sharedcomponents);
-
+      t.strictEqual(a, sharedcomponents);
       return {
         profilePanel: true
       };
-    });
+    }]);
 
     t.strictEqual(registry.getFeature('profile'), registry.getFeature('profile'));
     t.strictEqual(profileInit, 1);
