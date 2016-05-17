@@ -38,3 +38,5 @@ registry.addCoreFeature('MyCoreFeature2', ['MyCoreFeature', function(MyCoreFeatu
   };
 }]);
 ```
+
+# [Changelog](/CHANGELOG.md)
