@@ -4,7 +4,7 @@
   "description": "iAdvize IoC Library",
   "main": "registry.js",
   "dependencies": {
-    "inversify": "^2.0.0-beta.3",
+    "inversify": "2.0.0-beta.6",
     "reflect-metadata": "^0.1.3",
     "lodash": "^4.12.0"
   },
