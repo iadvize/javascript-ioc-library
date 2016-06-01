@@ -1,5 +1,15 @@
 ## Change Log
 
+### v1.0.4 (2016/06/01 09:22 +00:00)
+- [41d5c77](https://github.com/iadvize/javascript-ioc-library/commit/41d5c77dd275e95e6ce41e1509a69ef215d4622b) Release v1.0.4. (@FGRibreau)
+- [26deec7](https://github.com/iadvize/javascript-ioc-library/commit/26deec75dc82b5c4f9a553cbb08f0270e4b92fe7) fix(package): fix inversify to beta6 (@FGRibreau)
+
+### v1.0.3 (2016/05/20 11:04 +00:00)
+- [14603c5](https://github.com/iadvize/javascript-ioc-library/commit/14603c5518b7b7f8cd4f1ace5758e9760aa922f8) Release v1.0.3. (@FGRibreau)
+- [#1](https://github.com/iadvize/javascript-ioc-library/pull/1) Merge pull request #1 from iadvize/fixAllowEs6 (@iadvize)
+- [3e8caf1](https://github.com/iadvize/javascript-ioc-library/commit/3e8caf130566b894210f8cee5a389bde3ea51027) Allow es6 (@fdeurioste)
+- [86d1ab6](https://github.com/iadvize/javascript-ioc-library/commit/86d1ab6bdfa0f061e82c9a8f9af4435fc3e84001) docs(changelog): updated (@FGRibreau)
+
 ### v1.0.1 (2016/05/17 13:47 +00:00)
 - [2a1d427](https://github.com/iadvize/javascript-ioc-library/commit/2a1d42755a6d2cf25c2dbb7a5c719b8000e65d84) Release v1.0.1. (@FGRibreau)
 - [4f4eec4](https://github.com/iadvize/javascript-ioc-library/commit/4f4eec4371e162eeb0a75ef961db5c47303c6ab9) fix(registry): put everything in lowercase (@FGRibreau)
