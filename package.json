@@ -1,6 +1,6 @@
 {
   "name": "iadvize-ioc-library",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "iAdvize IoC Library",
   "main": "registry.js",
   "dependencies": {
