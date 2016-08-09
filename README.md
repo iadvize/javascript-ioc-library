@@ -1,4 +1,4 @@
-# javascript-ioc-library
+# javascript-ioc-library [![CircleCI](https://circleci.com/gh/iadvize/javascript-ioc-library/tree/master.svg?style=svg)](https://circleci.com/gh/iadvize/javascript-ioc-library/tree/master)
 
 iAdvize Inversion of Control container (used in desk v3 #OHYEAH).
 
