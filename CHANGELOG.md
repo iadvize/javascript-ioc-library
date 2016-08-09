@@ -1,5 +1,17 @@
 ## Change Log
 
+### upcoming (2016/08/09 09:46 +00:00)
+- [8479ec6](https://github.com/iadvize/javascript-ioc-library/commit/8479ec614795d9011ead0809eda92ceb84d67b21) fix(circle) (@FGRibreau)
+- [f2161b0](https://github.com/iadvize/javascript-ioc-library/commit/f2161b02faf453e68ae4c1a235cfc1c7944f08be) fix(package) (@FGRibreau)
+
+### v2.0.0 (2016/08/09 09:41 +00:00)
+- [914c885](https://github.com/iadvize/javascript-ioc-library/commit/914c8855849cb65bde0ae0921e63069220cb1ab2) Release v2.0.0. (@FGRibreau)
+- [#5](https://github.com/iadvize/javascript-ioc-library/pull/5) Merge pull request #5 from iadvize/issue-4 (@iadvize)
+- [e97dd49](https://github.com/iadvize/javascript-ioc-library/commit/e97dd49207ccc1852eafd36e051c391b824968b2) fix(registry): ensure there is no mismatch between dependency declaration array and function argument length, fixes #4 (@FGRibreau)
+- [631db63](https://github.com/iadvize/javascript-ioc-library/commit/631db630923f4d4288e43cd998222d0e1ba1dadc) Update MAINTAINERS (@FGRibreau)
+- [ef2bb90](https://github.com/iadvize/javascript-ioc-library/commit/ef2bb90f0c9b1e0af5dfa05793d42eeeab4935b1) feat(MAINTAINERS) (@FGRibreau)
+- [215c72e](https://github.com/iadvize/javascript-ioc-library/commit/215c72e3c48e535c3d578c5a65771d691a82b870) docs(changelog): updated (@FGRibreau)
+
 ### v1.0.4 (2016/06/01 09:22 +00:00)
 - [41d5c77](https://github.com/iadvize/javascript-ioc-library/commit/41d5c77dd275e95e6ce41e1509a69ef215d4622b) Release v1.0.4. (@FGRibreau)
 - [26deec7](https://github.com/iadvize/javascript-ioc-library/commit/26deec75dc82b5c4f9a553cbb08f0270e4b92fe7) fix(package): fix inversify to beta6 (@FGRibreau)
