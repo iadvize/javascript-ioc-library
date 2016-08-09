@@ -49,6 +49,10 @@ function Registry() {
 
     const deps = _.initial(featureDesc).map((feature) => feature.toLowerCase());
 
+    if(deps.length !== feature.length){
+      throw new Error(`Mismatch between feature dependency array declaration and feature function argument length. See http://bit.ly/2aRp7iS`);
+    }
+
     deps.forEach((dep, i) => {
       if (!_.has(symbols, dep)) {
         throw new Error(`Undeclared feature "${dep}"!`);

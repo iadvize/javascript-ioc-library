@@ -1,4 +1,5 @@
 const t = require('chai').assert;
+const sinon = require('sinon');
 
 describe('registry', () => {
   const Registry = require('./registry');
@@ -22,5 +23,14 @@ describe('registry', () => {
 
     t.strictEqual(registry.getFeature('profile'), registry.getFeature('profile'));
     t.strictEqual(profileInit, 1);
+  });
+
+  it('should throw an error if a dependency is declarared but not set as a parameter', () => {
+    const registry = Registry();
+    const handler = sinon.spy();
+    registry.addCoreFeature('Dep', [handler]);
+    t.throws(() => {
+      registry.addFeature('Profile', ['Dep', function Profile() {}]);
+    });
   });
 });
