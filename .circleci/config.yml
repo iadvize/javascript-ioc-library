@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/javascript-ioc-library
+    docker:
+      - image: circleci/node:6.3
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - run:
+          name: Run tests
+          command: yarn test
