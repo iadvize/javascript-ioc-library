@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/javascript-ioc-library
     docker:
-      - image: circleci/node:6
+      - image: circleci/node:6.2.2
     steps:
       - checkout
       - run:
