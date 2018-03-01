@@ -1,21 +1,9 @@
-# javascript-ioc-library [![CircleCI](https://circleci.com/gh/iadvize/javascript-ioc-library/tree/master.svg?style=svg)](https://circleci.com/gh/iadvize/javascript-ioc-library/tree/master)
+javascript-ioc-library [![CircleCI](https://circleci.com/gh/iadvize/javascript-ioc-library/tree/master.svg?style=svg)](https://circleci.com/gh/iadvize/javascript-ioc-library/tree/master)
+======================
 
-iAdvize Inversion of Control container (used in desk v3 #OHYEAH).
+iAdvize Inversion of Control container.
 
-
-# npm
-
-```
-npm i iadvize-ioc-library -S
-```
-
-# create a registry
-
-```js
-const registry = Registry();
-```
-
-# define core feature
+## Examples
 
 ```js
 registry.addCoreFeature('MyCoreFeature', [function() {
@@ -39,4 +27,22 @@ registry.addCoreFeature('MyCoreFeature2', ['MyCoreFeature', function(MyCoreFeatu
 }]);
 ```
 
-# [Changelog](/CHANGELOG.md)
+## Install
+
+```bash
+npm install iadvize-ioc-library -S
+```
+
+## Documentation
+
+### Creating a registry
+
+To declare a new registry do :
+
+```js
+const registry = Registry();
+```
+
+## Contribute
+
+Look at contribution guidelines here : [CONTRIBUTING.md](CONTRIBUTING.md)
